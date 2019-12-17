@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Stuffed Dropdown Designators</name>
+  <author>Usagirei</author>
+  <url></url>
+  <supportedVersions>
+	<li>1.0</li>
+  </supportedVersions>
+  <description>
+    By default, when using DesignatorDropdownGroupDef, the game won't open the Stuff Selection Dropdown when using Stuffed ThingDefs, 
+	making it impossible to use a combination of both Dropdowns, and Stuffed Things
+	
+	This patches the Dropdown Designators (defs with designatorDropdown) to also support Stuffed ThingDefs (defs with stuffCategories),
+	after selecting the Building designation in the dropdown, it'll select the Building designation as well as open the Stuff selection dropdown,
+	at which point you can move the mouse away, or select the stuff variant to construct.
+	
+	Doesn't affect normal Dropdowns, nor Stuffed things without a dropdown group
+
+	---
+	Dev Notes:
+	
+	Patch transpiles Designator_Dropdown::ProcessEvent to include a call before the constructor to FloatMenu 
+	which then patches the actions of the FloatMenuOptions, and wraps the call with another one that calls the ProcessEvent of the underlying Designator after calling the old action
+	Shouldn't cause any incompatibilities
+  </description>
+</ModMetaData>
